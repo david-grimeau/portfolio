@@ -531,7 +531,7 @@
   <!-- Desktop Navigation -->
 <nav class="desktop-nav">
   <div class="desktop-nav-container">
-    <a href="accueil.html"><i class="fas fa-home mr-2"></i>Accueil</a>
+    <a href="index.html"><i class="fas fa-home mr-2"></i>Accueil</a>
     <a href="travaux.html"><i class="fas fa-folder-open mr-2"></i>Travaux</a>
     <a href="contact.html"><i class="fas fa-envelope mr-2"></i>Contact</a>
   </div>
@@ -539,7 +539,7 @@
 
 <nav class="mobile-nav">
   <div class="mobile-nav-container">
-    <a href="accueil.html" class="mobile-nav-btn">Accueil</a>
+    <a href="index.html" class="mobile-nav-btn">Accueil</a>
     <a href="travaux.html" class="mobile-nav-btn">Travaux</a>
     <a href="contact.html" class="mobile-nav-btn">Contact</a>
   </div>
@@ -566,7 +566,7 @@
     </section>
 
 <!-- Contexte du projet -->
-<section class="px-8 sm:px-8 lg:px-8 pt-24 sm:pt-28 pb-16 sm:pb-20">
+<section class="px-8 sm:px-8 lg:px-8 pt-24 sm:pt-28 pb-4">
     <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             
@@ -688,7 +688,7 @@
                     </div>
                     
                     <div class="step-card rounded-2xl sm:rounded-3xl overflow-hidden fade-in h-full">
-                        <img src="confiture.png" alt="Charte graphique" class="w-full h-full object-contain">
+                        <img src="confiture.png" alt="Charte graphique" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
@@ -717,56 +717,60 @@
         </div>
 
         <!-- Étape 2 -->
-        <div class="fade-in mb-16 sm:mb-24 relative" style="animation-delay: 0.2s;">
-            <div class="progress-dot hidden lg:block" style="top: 100px;"></div>
-            <div class="step-card rounded-2xl sm:rounded-3xl p-6 sm:p-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
-                    <div class="order-2 lg:order-1">
-                        <div class="rounded-xl sm:rounded-2xl p-6 sm:p-8 flex flex-col items-center justify-center">
-                          <!-- Image pour mobile (visible sur sm et en dessous) -->
-                          <img src="rs-confiture.png" alt="Visuels posts" class="block sm:hidden w-full h-full object-cover rounded-lg">
+<div class="fade-in mb-16 sm:mb-24 relative lg:pl-36 lg:pr-36" style="animation-delay: 0.2s;">
+  <div class="progress-dot hidden lg:block" style="top: 100px;"></div>
+  <div class="step-card rounded-2xl sm:rounded-3xl p-6 sm:p-8">
+    <div class="flex flex-col lg:flex-row items-center gap-0">
+      
+      <!-- Image à gauche -->
+      <div class="order-2 lg:order-1 flex-shrink-0">
+        <div class="rounded-xl sm:rounded-2xl p-0 flex items-center justify-center h-full">
+          <!-- Image pour mobile -->
+          <img src="rs-confiture.png" alt="Visuels posts" class="block lg:hidden w-auto h-auto object-cover rounded-lg pt-4">
 
-                          <!-- Image pour desktop (visible à partir de sm+) -->
-                          <img src="rsdestock.png" alt="Visuels posts" class="hidden sm:block w-full h-full object-cover rounded-lg">
-
-                        </div>
-                    </div>
-                    
-                    <div class="order-1 lg:order-2">
-                        <div class="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
-                            <div class="step-number w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl text-white flex items-center justify-center text-lg sm:text-xl font-bold shrink-0">
-                                2
-                            </div>
-                            <div>
-                                <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-1 sm:mb-2">Création Visuelle</h3>
-                                <p class="text-blue-600 font-semibold text-sm sm:text-base">Développement des supports visuels</p>
-                            </div>
-                        </div>
-                        
-                        <div class="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
-                            <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-600">
-                                <i class="fas fa-paint-brush text-blue-500 w-4 sm:w-5"></i>
-                                <span>Création de visuels pour les posts</span>
-                            </div>
-                            <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-600">
-                                <i class="fas fa-layer-group text-indigo-500 w-4 sm:w-5"></i>
-                                <span>Mise en valeur du savoir-faire</span>
-                            </div>
-                            <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-600">
-                                <i class="fas fa-hashtag text-purple-500 w-4 sm:w-5"></i>
-                                <span>Adaptation aux réseaux sociaux</span>
-                            </div>
-                        </div>
-
-                        <div class="bg-slate-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-l-4 border-blue-500">
-                            <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
-                                J'ai créé une série de visuels pour leurs posts en respectant la charte graphique. L'objectif était de structurer et organiser leur façon de mettre en avant leur savoir-faire artisanal. Chaque visuel raconte une histoire autour de leur expertise tout en gardant une cohérence visuelle forte.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          <!-- Image pour desktop -->
+          <img src="rs-new.png" alt="Visuels posts" class="hidden lg:block w-auto max-h-80 rounded-lg pt-4">
         </div>
+      </div>
+
+      <!-- Texte à droite -->
+      <div class="order-1 lg:order-2 flex-1 pl-6 sm:pl-8">
+        <div class="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
+          <div class="step-number w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl text-white flex items-center justify-center text-lg sm:text-xl font-bold shrink-0">
+            2
+          </div>
+          <div>
+            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-1 sm:mb-2">Création Visuelle</h3>
+            <p class="text-blue-600 font-semibold text-sm sm:text-base">Développement des supports visuels</p>
+          </div>
+        </div>
+
+        <div class="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
+          <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-600">
+            <i class="fas fa-paint-brush text-blue-500 w-4 sm:w-5"></i>
+            <span>Création de visuels pour les posts</span>
+          </div>
+          <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-600">
+            <i class="fas fa-layer-group text-indigo-500 w-4 sm:w-5"></i>
+            <span>Mise en valeur du savoir-faire</span>
+          </div>
+          <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-600">
+            <i class="fas fa-hashtag text-purple-500 w-4 sm:w-5"></i>
+            <span>Adaptation aux réseaux sociaux</span>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-l-4 border-blue-500">
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+            J'ai créé une série de visuels pour leurs posts en respectant la charte graphique. L'objectif était de structurer et organiser leur façon de mettre en avant leur savoir-faire artisanal. Chaque visuel raconte une histoire autour de leur expertise tout en gardant une cohérence visuelle forte.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 
         <!-- Galerie d'images après Étape 2 -->
         <div class="fade-in mb-16 sm:mb-24 relative" style="animation-delay: 0.25s;">
@@ -794,9 +798,9 @@
         </div>
 
 <!-- Étape 3 -->
-        <div class="fade-in mb-16 sm:mb-24" style="animation-delay: 0.3s;">
+        <div class="fade-in mb-16 sm:mb-24 lg:pl-20 lg:pr-20" style="animation-delay: 0.3s;">
             <div class="step-card rounded-2xl sm:rounded-3xl p-6 sm:p-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
+                <div class="grid grid-cols-1 gap-6 sm:gap-8 items-start">
                     <div>
                         <div class="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
                             <div class="step-number w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl text-white flex items-center justify-center text-lg sm:text-xl font-bold shrink-0">
@@ -845,10 +849,10 @@
         </div>
 
         <!-- Étape 4 -->
-        <div class="fade-in mb-16 sm:mb-24" style="animation-delay: 0.4s;">
+        <div class="fade-in mb-16 sm:mb-24 lg:pl-20 lg:pr-20" style="animation-delay: 0.4s;">
             <div class="step-card rounded-2xl sm:rounded-3xl p-6 sm:p-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
-                    <div class="order-2 lg:order-1">
+                <div class="grid grid-cols-1 gap-6 sm:gap-8 items-start">
+                    <div class="order-2">
                         <div class="rounded-xl sm:rounded-2xl flex flex-col items-center justify-center">
                           <!-- Image pour mobile (visible sur sm et en dessous) -->
                           <img src="ACCUEILv2.png" alt="Visuels posts" class="block sm:hidden w-full h-full object-cover rounded-lg">
@@ -858,7 +862,7 @@
                         </div>
                     </div>
                     
-                    <div class="order-1 lg:order-2">
+                    <div class="order-1">
                         <div class="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
                             <div class="step-number w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl text-white flex items-center justify-center text-lg sm:text-xl font-bold shrink-0">
                                 4
@@ -909,12 +913,12 @@
                 Explorez l'ensemble du processus de conception et les livrables finaux de ce projet e-commerce
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://www.figma.com/proto/L4i30hx9cxmuJdtiq4olvw/Untitled?node-id=72-1210&t=ymcI3YJq4JTskSCf-0&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=72%3A1210" class="inline-flex items-center gap-3 bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-all transform hover:scale-105">
-                    <i class="fab fa-figma text-lg"></i>
+                <a href="https://www.figma.com/proto/L4i30hx9cxmuJdtiq4olvw/Untitled?node-id=0-1&p=f&t=KmkAWkhO8nqmykBj-0&scaling=scale-down&content-scaling=fixed&starting-point-node-id=72%3A1210&show-proto-sidebar=1" target="_blank" class="inline-flex items-center gap-3 bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-all transform hover:scale-105">
+                    <i class="fas fa-laptop text-lg text-blue-500"></i>
                     Prototype Figma ordinateur
                 </a>
-                <a href="https://www.figma.com/proto/L4i30hx9cxmuJdtiq4olvw/Untitled?node-id=164-1400&t=ymcI3YJq4JTskSCf-0&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=72%3A1210&show-proto-sidebar=1" class="inline-flex items-center gap-3 bg-white/10 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/20 transition-all backdrop-blur transform hover:scale-105">
-                    <i class="fas fa-globe text-lg"></i>
+                <a href="https://www.figma.com/proto/L4i30hx9cxmuJdtiq4olvw/Untitled?node-id=0-1&p=f&t=KmkAWkhO8nqmykBj-0&scaling=scale-down&content-scaling=fixed&starting-point-node-id=164%3A1367&show-proto-sidebar=1" target="_blank" class="inline-flex items-center gap-3 bg-white/10 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/20 transition-all backdrop-blur transform hover:scale-105">
+                    <i class="fas fa-mobile-alt text-lg text-white-500"></i>
                     Prototype Figma téléphone
                 </a>
             </div>

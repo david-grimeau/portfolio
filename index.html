@@ -572,7 +572,7 @@
             margin: 0 auto 3rem;
             max-width: 1200px;
             padding: 0 1rem;
-            align-items: stretch;
+            align-items: start;
         }
 
         .project-card {
@@ -586,7 +586,6 @@
             margin: 0.75rem;
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             border: 1px solid rgba(59, 130, 246, 0.05);
-            height: auto;
         }
 
         .project-card:hover {
@@ -597,16 +596,18 @@
         }
 
         .project-image {
-            height: 180px;
+            width: 100%;
             overflow: hidden;
+            /* plus de hauteur fixe */
         }
-
         .project-image img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto; /* garde les proportions */
+            object-fit: contain; /* ou cover selon l'effet désiré */
+            display: block;
             transition: transform 0.3s ease;
         }
+
 
         .project-card:hover .project-image img {
             transform: scale(1.05);
@@ -661,6 +662,39 @@
             margin-top: auto;
             width: fit-content;
         }
+
+        .with-overlay {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.full-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 123, 255, 0.2); /* bleu transparent */
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; /* rend le lien cliquable malgré la surcouche */
+}
+
+.status-bubble {
+  background-color: white;
+  color: #007bff;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  text-align: center;
+  z-index: 3;
+}
+
 
         .view-all-btn {
             display: inline-block;
@@ -887,7 +921,6 @@
   .mobile-link .project-description {
     font-size: 0.85rem;
     line-height: 1.4;
-    max-height: 4.2em;
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -917,10 +950,14 @@
   }
 
   .mobile-link .project-description {
-    max-height: 4.2em;
+    max-height: auto;
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+  .hero-section {
+            padding: 0rem 2rem 2rem 2rem;
+        }
 }
 </style>
 </head>
@@ -937,7 +974,7 @@
   <!-- Navigation -->
   <nav class="desktop-nav">
     <div class="desktop-nav-container">
-      <a href="accueil.html" class="active"><i class="fas fa-home mr-2"></i>Accueil</a>
+      <a href="index.html" class="active"><i class="fas fa-home mr-2"></i>Accueil</a>
       <a href="travaux.html"><i class="fas fa-folder-open mr-2"></i>Travaux</a>
       <a href="contact.html"><i class="fas fa-envelope mr-2"></i>Contact</a>
     </div>
@@ -945,7 +982,7 @@
 
   <nav class="mobile-nav">
    <div class="mobile-nav-container">
-      <a href="accueil.html" class="mobile-nav-btn active">Accueil</a>
+      <a href="index.html" class="mobile-nav-btn active">Accueil</a>
       <a href="travaux.html" class="mobile-nav-btn">Travaux</a>
       <a href="contact.html" class="mobile-nav-btn">Contact</a>
     </div>
@@ -1176,7 +1213,7 @@
   <!-- Project 1 -->
   <a href="projets-la-fee-confiture.html" class="project-card mobile-link">
     <div class="project-image">
-      <img src="feeconfiture-logo-secondaire.png" alt="Event Management App">
+      <img src="confiture.png" alt="Event Management App">
     </div>
     <div class="project-content">
       <span class="project-category">APPLICATION MOBILE | Mai 2024</span>
@@ -1188,26 +1225,32 @@
     </div>
   </a>
 
-  <!-- Project 2 -->
-  <a href="https://tonlien2.com" class="project-card mobile-link">
-    <div class="project-image">
-      <img src="solutravo-pann.png" alt="Digital Illustration">
-    </div>
-    <div class="project-content">
-      <span class="project-category">ILLUSTRATION NUMÉRIQUE | Février-Mars 2024</span>
-      <h3 class="project-title">Collection d'Art Abstrait</h3>
-      <p class="project-description">
-        Création d'une série de 12 œuvres d'art abstrait explorant la théorie des couleurs et les compositions géométriques pour une exposition en galerie.
-      </p>
-      <span class="btn btn-secondary desktop-only">En savoir plus</span>
-    </div>
-  </a>
+<!-- Project 2 -->  
+<a href="" class="project-card mobile-link with-overlay">
+  <div class="project-image">
+    <img src="solutravo-pann.png" alt="Digital Illustration">
+  </div>
+  <div class="project-content">
+    <span class="project-category">GESTION D'ENTREPRISE | Novembre 2024 - Présent</span>
+    <h3 class="project-title">Gestion des réseaux sociaux et création graphique</h3>
+    <p class="project-description">
+      Ce projet fait suite à mon expérience en entreprise commencée en novembre 2024, incluant la gestion des réseaux sociaux, la création de logos, la gestion du site web et la création de nouvelles pages.
+    </p>
+    <span class="btn btn-secondary desktop-only">En savoir plus</span>
+  </div>
+
+  <!-- Couche bleue + bulle -->
+  <div class="full-overlay">
+    <div class="status-bubble">Projet non terminé</div>
+  </div>
+</a>
 </div>
 
 
     <div class="text-center">
       <a href="travaux.html" class="btn btn-primary">Voir tous les projets</a>
     </div>
+  </div>
   </div>
 </section>
 
