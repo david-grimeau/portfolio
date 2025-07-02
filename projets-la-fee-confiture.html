@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Processus de Conception</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #e0f2fe 100%);
+            color: #1e40af;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            min-height: 100vh;
+        }
+
+        /* Hero Background */
+        .hero-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .shape {
+            position: absolute;
+            transition: transform 0.3s ease;
+            opacity: 0.6;
+        }
+
+        .shape-1 {
+            width: 250px; height: 300px;
+            background: radial-gradient(circle, rgba(59,130,246,0.2), rgba(147,197,253,0.1));
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            top: 10%; left: 5%;
+            filter: blur(0.5px);
+        }
+
+        .shape-2 {
+            width: 200px; height: 250px;
+            background: linear-gradient(145deg, rgba(99,102,241,0.18), rgba(147,197,253,0.08));
+            border-radius: 50% 50% 70% 30% / 30% 60% 40% 70%;
+            top: 50%; right: 10%;
+            filter: blur(0.8px);
+        }
+
+        .shape-3 {
+            width: 180px; height: 220px;
+            background: linear-gradient(125deg, rgba(59,130,246,0.25), rgba(255,255,255,0.1));
+            border-radius: 70% 30% 50% 50% / 50% 60% 40% 70%;
+            bottom: 10%; left: 30%;
+            filter: blur(1px);
+        }
+
+        .glow {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(59,130,246,0.1), transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 6s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.2; }
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(248,250,252,0.6));
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.75rem, 5vw, 4rem); /* taille minimale réduite */
+            font-weight: 800;
+            margin-bottom: 1rem;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+
+        .hero-subtitle {
+            font-size: clamp(1.125rem, 3vw, 1.5rem);
+            color: #3b82f6;
+            font-weight: 500;
+            animation: slideInUp 1s ease-out 0.4s both;
+        }
+
+        .hero-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-logo {
+  position: absolute;
+  bottom: 2rem;
+  width: 120px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  z-index: 10;
+  animation: slideInUp 1s ease-out 0.8s both;
+  bottom: -17rem;
+}
+
+.hero-logo img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+  .hero-logo {
+    width: 110px;
+    height: 110px;
+    bottom: -14rem;
+  }
+
+  .hero-logo img {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .step-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.08);
+        }
+        
+        .step-card:hover {
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15);
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+            box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
+        }
+        
+        .cta-gradient {
+            background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+            box-shadow: 0 8px 32px rgba(29, 78, 216, 0.3);
+        }
+        
+        .visual-placeholder {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border: 2px dashed #3b82f6;
+            min-height: 250px;
+        }
+        
+        .section-divider {
+            position: relative;
+            padding: 80px 0;
+        }
+        
+        /* Nouveaux styles pour les galeries d'images */
+        .image-gallery {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.03) 0%, rgba(147, 51, 234, 0.03) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-gallery::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        .gallery-item {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+        }
+        
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.1) 50%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+        
+        a.inline-flex {
+            transition: transform 0.1s ease;
+        }
+
+        a.inline-flex:active {
+            transform: scale(0.95) translateY(2px);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.2); }
+        }
+        
+        
+        @media (max-width: 1024px) {
+            .floating-image {
+                position: relative;
+                margin: 20px auto;
+            }
+            
+            .progress-line, .progress-dot {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .visual-placeholder {
+                min-height: 200px;
+            }
+            
+            .section-divider {
+                padding: 40px 0;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .step-number {
+                width: 36px;
+                height: 36px;
+                font-size: 0.9rem;
+            }
+            
+            .visual-placeholder {
+                min-height: 180px;
+            }
+        }
+
+        /* Footer - Clean Minimal Design */
+
+        .desktop-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      padding: 1.5rem 0;
+    }
+
+    .desktop-nav-container {
+      display: flex;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(15px);
+      border-radius: 2rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05);
+      padding: 0.5rem;
+      gap: 0.5rem;
+    }
+
+    .desktop-nav-container a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.25rem;
+      border-radius: 9999px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #1e293b;
+      text-decoration: none;
+      min-width: 44px;
+      min-height: 44px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .desktop-nav-container a:hover {
+      background-color: #e0f2fe;
+      color: #1d4ed8;
+    }
+
+    .mobile-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 60;
+      display: none;
+      justify-content: center;
+      padding: 2rem 1rem 1.5rem 1rem;
+    }
+
+    .mobile-nav-container {
+      display: flex;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(15px);
+      border-radius: 2rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 4px 16px rgba(0, 0, 0, 0.08);
+      padding: 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      gap: 0.25rem;
+    }
+
+    .mobile-nav-container a {
+      padding: 0.75rem 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #1e293b;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: background-color 0.3s, color 0.3s;
+      min-width: 44px;
+      min-height: 44px;
+    }
+
+    .mobile-nav-container a:hover {
+      background-color: #e0f2fe;
+      color: #1d4ed8;
+    }
+
+   /* Ajoutez cette classe à votre CSS existant */
+
+/* État actif discret pour le bouton de navigation */
+.desktop-nav-container a.active {
+  background: rgba(59, 130, 246, 0.1);
+  color: #1d4ed8;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.desktop-nav-container a.active:hover {
+  background: rgba(59, 130, 246, 0.15);
+  color: #1d4ed8;
+}
+
+.mobile-nav-container a.active {
+  background: rgba(59, 130, 246, 0.1);
+  color: #1d4ed8;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.mobile-nav-container a.active:hover {
+  background: rgba(59, 130, 246, 0.15);
+  color: #1d4ed8;
+}
+
+/* Bouton Retour */
+.back-button {
+    position: static;
+    top: 2rem;
+    left: 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #64748b;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 9999;
+    animation: slideInLeft 1s ease-out 0.6s both;
+     margin-bottom: 1rem;
+}
+
+/* Effet hover */
+.back-button:hover {
+    color: #3b82f6;
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 16px 48px rgba(59, 130, 246, 0.2), 0 6px 20px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+/* Icône dans le bouton */
+.back-button i {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover i {
+    transform: translateX(-4px);
+}
+
+.btn {
+        display: inline-block;
+        padding: 0.8rem 1.8rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.25s ease;
+        min-width: 44px;
+        min-height: 44px;
+        text-align: center;
+    }
+        
+        /* Secondary Button */
+    .btn-secondary {
+        background: white;
+        color: #3b82f6;
+        border: 2px solid #3b82f6;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(59, 130, 246, 0.1);
+    }
+
+    .btn-secondary:hover {
+        background: #3b82f6;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(59, 130, 246, 0.2);
+    }
+
+    .btn-secondary:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(59, 130, 246, 0.1);
+    }
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 4rem 2rem 4rem;
+      }  
+    
+      .desktop-nav {
+        display: none;
+      }
+
+      .mobile-nav {
+        display: flex;
+      }
+
+      footer {
+        position: relative;
+        z-index: 999; /* Il recouvre la nav mobile */
+      }
+    }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen">
+
+<!-- Desktop Navigation -->
+<div class="hero-bg">
+    <div class="glow"></div>
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="particles" id="particles"></div>
+  </div>
+
+  <!-- Desktop Navigation -->
+<nav class="desktop-nav">
+  <div class="desktop-nav-container">
+    <a href="accueil.html"><i class="fas fa-home mr-2"></i>Accueil</a>
+    <a href="travaux.html"><i class="fas fa-folder-open mr-2"></i>Travaux</a>
+    <a href="contact.html"><i class="fas fa-envelope mr-2"></i>Contact</a>
+  </div>
+</nav>
+
+<nav class="mobile-nav">
+  <div class="mobile-nav-container">
+    <a href="accueil.html" class="mobile-nav-btn">Accueil</a>
+    <a href="travaux.html" class="mobile-nav-btn">Travaux</a>
+    <a href="contact.html" class="mobile-nav-btn">Contact</a>
+  </div>
+</nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <!-- Bouton Retour -->
+        <a href="travaux.html" class="back-button inline-flex">
+            <i class="fas fa-arrow-left "></i>
+            <span>Retour aux travaux</span>
+        </a>
+
+        <div class="hero-container">
+          <div class="hero-logo">
+            <img src="LA_FEE__LOGO_PASTILLE_RONDE.png" alt="Logo" />
+          </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+            <h1 class="hero-title">La Fée Confiture</h1>
+            <p class="hero-subtitle">Website Redesign - UX/UI Design</p>
+        </div>
+    </section>
+
+<!-- Contexte du projet -->
+<section class="px-8 sm:px-8 lg:px-8 pt-24 sm:pt-28 pb-16 sm:pb-20">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            
+            <!-- Texte -->
+            <div class="order-1 lg:order-2 sm:order-2 lg:order-1">
+                <div class="step-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 h-full fade-in" style="animation-delay: 0.1s;">
+                    <div class="mb-4 sm:mb-6">
+                        <div class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs sm:text-sm font-medium mb-3">
+                            <i class="fas fa-info-circle mr-2"></i>
+                            Projet client
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-3 sm:mb-4">Contexte du projet</h2>
+                        <p class="text-base sm:text-lg text-slate-700 mb-6">
+                            La Fée Confiture est une productrice artisanale de confitures basée en Provence, en France.
+                            Son site internet était obsolète et ne reflétait plus son identité poétique et artisanale.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-l-4 border-blue-500">
+                        <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-4">Objectifs du projet</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-start gap-3 text-sm sm:text-base text-slate-700">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 w-4 sm:w-5"></i>
+                                <span>Moderniser l'interface tout en préservant l'identité de la marque</span>
+                            </div>
+                            <div class="flex items-start gap-3 text-sm sm:text-base text-slate-700">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 w-4 sm:w-5"></i>
+                                <span>Un design responsive adapté à tous les appareils</span>
+                            </div>
+                            <div class="flex items-start gap-3 text-sm sm:text-base text-slate-700">
+                                <i class="fas fa-check-circle text-blue-500 mt-1 w-4 sm:w-5"></i>
+                                <span>Améliorer l'expérience utilisateur et la conversion</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image + Légende -->
+            <div class="order-2 lg:order-1 sm:order-1 lg:order-2">
+                <div class="step-card rounded-2xl sm:rounded-3xl overflow-hidden fade-in h-full" style="animation-delay: 0.2s;">
+                    <div class="flex flex-col items-center justify-center w-full">
+                        <img src="anciensite-lafeeconfiture.png" alt="Ancien site web" class="ms:w-full ms:h-auto object-cover">
+                    </div>
+                    <div class="p-4 sm:p-6 bg-white">
+                        <h3 class="text-lg sm:text-xl font-bold text-slate-800 mb-2">Ancien site web</h3>
+                        <p class="text-slate-700 text-sm sm:text-base mb-4">
+                            Interface obsolète nécessitant une refonte complète
+                        </p>
+                        <a href="https://web.archive.org/web/20250614225745/https://www.lafeeconfiture.com/" 
+                           target="_blank" 
+                           class="btn btn-secondary desktop-only w-full">
+                            <i class="fas fa-external-link-alt inline-flex"></i>
+                            Voir le site original
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Header -->
+<section class="px-4 sm:px-6 py-12 sm:py-16">
+    <div class="max-w-4xl mx-auto text-center fade-in">
+        <div class="inline-flex items-center px-3 sm:px-4 py-2 bg-white/70 backdrop-blur rounded-full text-xs sm:text-sm text-slate-600 mb-4 sm:mb-6 border border-blue-100">
+            <i class="fas fa-lightbulb mr-2 text-blue-500"></i>
+            Mon processus créatif
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-3 sm:mb-4">
+            De la <span class="text-blue-600">recherche</span> au produit final
+        </h1>
+        <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto px-4">
+            Une approche méthodique en 5 étapes pour créer des identités visuelles et expériences digitales sur-mesure
+        </p>
+    </div>
+</section>
+
+<!-- Processus -->
+<section class="px-8 sm:px-8 lg:px-16">
+    <div class="max-w-7xl mx-auto relative">
+        
+        <!-- Étape 1 -->
+        <div class="fade-in mb-16 sm:mb-24 relative" style="animation-delay: 0.1s;">
+            <div class="progress-dot hidden lg:block" style="top: 100px;"></div>
+            <div class="step-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 relative">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
+                    <div>
+                        <div class="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
+                            <div class="step-number w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl text-white flex items-center justify-center text-lg sm:text-xl font-bold shrink-0">
+                                1
+                            </div>
+                            <div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-1 sm:mb-2">Recherche & Analyse</h3>
+                                <p class="text-blue-600 font-semibold text-sm sm:text-base">Compréhension de la charte graphique</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
+                            <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-600">
+                                <i class="fas fa-search text-blue-500 w-4 sm:w-5"></i>
+                                <span>Étude de la nouvelle charte graphique</span>
+                            </div>
+                            <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-600">
+                                <i class="fas fa-palette text-indigo-500 w-4 sm:w-5"></i>
+                                <span>Analyse des codes visuels existants</span>
+                            </div>
+                            <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-600">
+                                <i class="fas fa-users text-purple-500 w-4 sm:w-5"></i>
+                                <span>Compréhension du savoir-faire artisanal</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-l-4 border-blue-500">
+                            <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+                                J'ai commencé par analyser en détail la nouvelle charte graphique mise à disposition. J'ai étudié les couleurs, typographies, et éléments visuels pour comprendre l'ADN de la marque. Ensuite, j'ai approfondi ma compréhension de leur savoir-faire artisanal pour pouvoir le mettre en valeur de manière authentique.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-card rounded-2xl sm:rounded-3xl overflow-hidden fade-in h-full">
+                        <img src="confiture.png" alt="Charte graphique" class="w-full h-full object-contain">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Galerie d'images après Étape 1 -->
+        <div class="fade-in mb-16 sm:mb-24 relative" style="animation-delay: 0.15s;">
+            <div class="progress-dot hidden lg:block" style="top: 50%;"></div>
+            <div class="image-gallery rounded-2xl sm:rounded-3xl p-6 sm:p-8">
+                <div class="text-center mb-6 sm:mb-8">
+                    <h4 class="text-lg sm:text-xl font-bold text-slate-900 mb-2">Charte graphique</h4>
+                    <p class="text-sm sm:text-base text-slate-600">Mood boards, références visuelles...</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
+                    <div class="h-full flex flex-col items-center justify-center">
+                        <img src="personnes.png" alt="Analyse" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="h-full flex flex-col items-center justify-center">
+                        <img src="palette.png" alt="Palette" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="h-full flex flex-col items-center justify-center">
+                        <img src="fruits.png" alt="Typographies" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Étape 2 -->
+        <div class="fade-in mb-16 sm:mb-24 relative" style="animation-delay: 0.2s;">
+            <div class="progress-dot hidden lg:block" style="top: 100px;"></div>
+            <div class="step-card rounded-2xl sm:rounded-3xl p-6 sm:p-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
+                    <div class="order-2 lg:order-1">
+                        <div class="rounded-xl sm:rounded-2xl p-6 sm:p-8 flex flex-col items-center justify-center">
+                          <!-- Image pour mobile (visible sur sm et en dessous) -->
+                          <img src="rs-confiture.png" alt="Visuels posts" class="block sm:hidden w-full h-full object-cover rounded-lg">
+
+                          <!-- Image pour desktop (visible à partir de sm+) -->
+                          <img src="rsdestock.png" alt="Visuels posts" class="hidden sm:block w-full h-full object-cover rounded-lg">
+
+                        </div>
+                    </div>
+                    
+                    <div class="order-1 lg:order-2">
+                        <div class="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
+                            <div class="step-number w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl text-white flex items-center justify-center text-lg sm:text-xl font-bold shrink-0">
+                                2
+                            </div>
+                            <div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-1 sm:mb-2">Création Visuelle</h3>
+                                <p class="text-blue-600 font-semibold text-sm sm:text-base">Développement des supports visuels</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
+                            <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-600">
+                                <i class="fas fa-paint-brush text-blue-500 w-4 sm:w-5"></i>
+                                <span>Création de visuels pour les posts</span>
+                            </div>
+                            <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-600">
+                                <i class="fas fa-layer-group text-indigo-500 w-4 sm:w-5"></i>
+                                <span>Mise en valeur du savoir-faire</span>
+                            </div>
+                            <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-600">
+                                <i class="fas fa-hashtag text-purple-500 w-4 sm:w-5"></i>
+                                <span>Adaptation aux réseaux sociaux</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-l-4 border-blue-500">
+                            <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+                                J'ai créé une série de visuels pour leurs posts en respectant la charte graphique. L'objectif était de structurer et organiser leur façon de mettre en avant leur savoir-faire artisanal. Chaque visuel raconte une histoire autour de leur expertise tout en gardant une cohérence visuelle forte.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Galerie d'images après Étape 2 -->
+        <div class="fade-in mb-16 sm:mb-24 relative" style="animation-delay: 0.25s;">
+            <div class="progress-dot hidden lg:block" style="top: 50%;"></div>
+            <div class="image-gallery rounded-2xl sm:rounded-3xl p-6 sm:p-8">
+                <div class="text-center mb-6 sm:mb-8">
+                    <h4 class="text-lg sm:text-xl font-bold text-slate-900 mb-2">Premiers visuels créés</h4>
+                    <p class="text-sm sm:text-base text-slate-600">Exemples de posts et déclinaisons visuelles</p>
+                </div>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                    <div class="h-full flex flex-col items-center justify-center">
+                        <img src="confiturepost.png" alt="Instagram 1" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="h-full flex flex-col items-center justify-center">
+                        <img src="evements.png" alt="Instagram 1" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="h-full flex flex-col items-center justify-center">
+                        <img src="storytelling.png" alt="Instagram 1" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="h-full flex flex-col items-center justify-center">
+                        <img src="postsss.png" alt="Instagram 1" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- Étape 3 -->
+        <div class="fade-in mb-16 sm:mb-24" style="animation-delay: 0.3s;">
+            <div class="step-card rounded-2xl sm:rounded-3xl p-6 sm:p-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
+                    <div>
+                        <div class="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
+                            <div class="step-number w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl text-white flex items-center justify-center text-lg sm:text-xl font-bold shrink-0">
+                                3
+                            </div>
+                            <div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-1 sm:mb-2">Wireframing & Architecture</h3>
+                                <p class="text-blue-600 font-semibold text-sm sm:text-base">Structure avant conception</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
+                            <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-600">
+                                <i class="fas fa-sitemap text-blue-500 w-4 sm:w-5"></i>
+                                <span>Wireframes</span>
+                            </div>
+                            <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-600">
+                                <i class="fas fa-project-diagram text-indigo-500 w-4 sm:w-5"></i>
+                                <span>Arborescence e-commerce</span>
+                            </div>
+                            <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-600">
+                                <i class="fas fa-brain text-purple-500 w-4 sm:w-5"></i>
+                                <span>Structuration de la pensée</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-l-4 border-blue-500">
+                            <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+                                Avant de commencer la maquette du site, j'ai structuré ma pensée en créant des wireframes détaillés. J'ai ensuite développé une arborescence complète pour le site e-commerce, en pensant parcours utilisateur, navigation intuitive et conversion. Cette étape cruciale permet de valider la structure avant d'investir dans le design.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class=" rounded-xl sm:rounded-2xl flex flex-col items-center justify-center">
+                        <div class="rounded-xl sm:rounded-2xl flex flex-col items-center justify-center">
+                          <!-- Image pour mobile (visible sur sm et en dessous) -->
+                          <img src="Check up.png" alt="Visuels posts" class="block sm:hidden w-full h-full object-cover rounded-lg">
+
+                          <!-- Image pour desktop (visible à partir de sm+) -->
+                          <img src="Check up.png" alt="Visuels posts" class="hidden sm:block w-full h-full object-cover rounded-lg">
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Étape 4 -->
+        <div class="fade-in mb-16 sm:mb-24" style="animation-delay: 0.4s;">
+            <div class="step-card rounded-2xl sm:rounded-3xl p-6 sm:p-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
+                    <div class="order-2 lg:order-1">
+                        <div class="rounded-xl sm:rounded-2xl flex flex-col items-center justify-center">
+                          <!-- Image pour mobile (visible sur sm et en dessous) -->
+                          <img src="ACCUEILv2.png" alt="Visuels posts" class="block sm:hidden w-full h-full object-cover rounded-lg">
+
+                          <!-- Image pour desktop (visible à partir de sm+) -->
+                          <img src="ACCUEILv2.png" alt="Visuels posts" class="hidden sm:block w-full h-full object-cover rounded-lg">
+                        </div>
+                    </div>
+                    
+                    <div class="order-1 lg:order-2">
+                        <div class="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
+                            <div class="step-number w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl text-white flex items-center justify-center text-lg sm:text-xl font-bold shrink-0">
+                                4
+                            </div>
+                            <div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-1 sm:mb-2">Design & Prototypage</h3>
+                                <p class="text-blue-600 font-semibold text-sm sm:text-base">Finalisation & tests</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
+                            <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-600">
+                                <i class="fas fa-desktop text-blue-500 w-4 sm:w-5"></i>
+                                <span>Maquettes</span>
+                            </div>
+                            <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-600">
+                                <i class="fas fa-mobile-alt text-indigo-500 w-4 sm:w-5"></i>
+                                <span>Version responsive</span>
+                            </div>
+                            <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-600">
+                                <i class="fas fa-mouse-pointer text-purple-500 w-4 sm:w-5"></i>
+                                <span>Prototypes interactifs</span>
+                            </div>
+                            <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-600">
+                                <i class="fas fa-vial text-green-500 w-4 sm:w-5"></i>
+                                <span>Tests utilisateurs</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-l-4 border-blue-500">
+                            <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+                                Après validation de la structure, j'ai créé les maquettes en appliquant la charte graphique. Le design system complet assure la cohérence sur toutes les pages. Les prototypes interactifs permettent de tester les parcours utilisateur et d'identifier les points d'amélioration avant développement.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="px-8">
+    <div class="max-w-4xl mx-auto">
+        <div class="cta-gradient rounded-3xl p-10 text-center text-white fade-in" style="animation-delay: 0.5s;">
+            <h2 class="text-3xl font-bold mb-4">Découvrir le projet complet</h2>
+            <p class="text-white/90 mb-8 max-w-2xl mx-auto text-lg">
+                Explorez l'ensemble du processus de conception et les livrables finaux de ce projet e-commerce
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://www.figma.com/proto/L4i30hx9cxmuJdtiq4olvw/Untitled?node-id=72-1210&t=ymcI3YJq4JTskSCf-0&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=72%3A1210" class="inline-flex items-center gap-3 bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-all transform hover:scale-105">
+                    <i class="fab fa-figma text-lg"></i>
+                    Prototype Figma ordinateur
+                </a>
+                <a href="https://www.figma.com/proto/L4i30hx9cxmuJdtiq4olvw/Untitled?node-id=164-1400&t=ymcI3YJq4JTskSCf-0&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=72%3A1210&show-proto-sidebar=1" class="inline-flex items-center gap-3 bg-white/10 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/20 transition-all backdrop-blur transform hover:scale-105">
+                    <i class="fas fa-globe text-lg"></i>
+                    Prototype Figma téléphone
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+    <footer class="bg-white border-t py-6 mt-12">
+    <div class="max-w-4xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-gray-500 text-sm">© 2025 David GRIMEAU. Tous droits réservés.</p>
+      <div class="flex gap-4 text-gray-500 text-lg">
+        <a href="mailto:davidgrim2005@gmail.com"><i class="fas fa-envelope hover:text-blue-500"></i></a>
+        <a href="https://www.linkedin.com/in/david-grimeau/" target="_blank"><i class="fab fa-linkedin-in hover:text-blue-500"></i></a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+// Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Background shapes animation on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const shapes = document.querySelectorAll('.shape');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+
+            shapes.forEach((shape, index) => {
+                const intensity = (index + 1) * 10;
+                const moveX = (mouseX - 0.5) * intensity;
+                const moveY = (mouseY - 0.5) * intensity;
+                
+                shape.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            });
+        });
+    </script>
