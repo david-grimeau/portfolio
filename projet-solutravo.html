@@ -416,6 +416,40 @@
         z-index: 999; /* Il recouvre la nav mobile */
       }
     }
+
+    .btn1 {
+        display: inline-block;
+        padding: 0.8rem 1.8rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.25s ease;
+        min-width: 44px;
+        min-height: 44px;
+        text-align: center;
+    }
+        
+        /* Secondary Button */
+    .btn-secondary1 {
+        background: white;
+        color: #3b82f6;
+        border: 2px solid #3b82f6;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(59, 130, 246, 0.1);
+    }
+
+    .btn-secondary1:hover {
+        background: #3b82f6;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(59, 130, 246, 0.2);
+    }
+
+    .btn-secondary1:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(59, 130, 246, 0.1);
+    }
     </style>
 
 <body class="from-slate-50 to-blue-50 min-h-screen">
@@ -497,9 +531,26 @@
           <li><strong>Lokis</strong> - Plateforme de gestion locative digitale</li>
         </ul>
       </div>
-      <div class="step-card overflow-hidden rounded-2xl shadow">
-        <img src="mockup-solutravo.png" alt="Présentation visuelle du groupe Solutravo" class="w-full h-auto object-cover">
-      </div>
+      <!-- Image + Légende -->
+            <div class="order-2 lg:order-1 sm:order-1 lg:order-2">
+                <div class="step-card rounded-2xl sm:rounded-3xl overflow-hidden fade-in h-full" style="animation-delay: 0.2s;">
+                    <div class="flex flex-col items-center justify-center w-full">
+                        <img src="Solupage.png" alt="Ancien site web" class="ms:w-full ms:h-auto object-cover">
+                    </div>
+                    <div class="p-4 sm:p-6 bg-white">
+                        <h3 class="text-lg sm:text-xl font-bold text-slate-800 mb-2">Site actuel</h3>
+                        <p class="text-slate-700 text-sm sm:text-base mb-4">
+                            Capture d'écran de la version en ligne du site Solutravo, utilisée comme référence visuelle dans le projet.
+                        </p>
+                        <a href="https://solutravo.fr/" 
+                           target="_blank" 
+                           class="btn1 btn-secondary1 desktop-only w-full">
+                            <i class="fas fa-external-link-alt inline-flex"></i>
+                            Voir le site en ligne
+                        </a>
+                    </div>
+                </div>
+            </div>
     </div>
   </section>
 
@@ -531,31 +582,31 @@
       Des outils créatifs et digitaux mobilisés tout au long du projet pour produire une expérience cohérente et impactante.
     </p>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 w-full justify-items-center">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-5 w-full justify-items-stretch px-16">
       
       <!-- Canva -->
-      <div class="bg-white p-6 rounded-xl shadow text-center flex flex-col items-center justify-center h-full w-full max-w-[180px]">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" alt="Canva" class="w-12 h-12 mb-4">
+      <div class="w-full h-full bg-white p-4 rounded-xl shadow text-center flex flex-col items-center justify-center">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" alt="Canva" class="w-12 h-12 mb-">
         <h3 class="text-slate-700 font-semibold text-sm">Canva</h3>
         <p class="text-xs text-slate-500">Design graphique</p>
       </div>
 
       <!-- Photoshop -->
-      <div class="bg-white p-6 rounded-xl shadow text-center flex flex-col items-center justify-center h-full w-full max-w-[180px]">
+      <div class="w-full h-full bg-white p-4 rounded-xl shadow text-center flex flex-col items-center justify-center">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" alt="Photoshop" class="w-12 h-12 mb-4">
         <h3 class="text-slate-700 font-semibold text-sm">Photoshop</h3>
         <p class="text-xs text-slate-500">Retouches visuelles</p>
       </div>
 
       <!-- WordPress -->
-      <div class="bg-white p-6 rounded-xl shadow text-center flex flex-col items-center justify-center h-full w-full max-w-[180px]">
+      <div class="w-full h-full bg-white p-4 rounded-xl shadow text-center flex flex-col items-center justify-center">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" alt="WordPress" class="w-12 h-12 mb-4">
         <h3 class="text-slate-700 font-semibold text-sm">WordPress</h3>
         <p class="text-xs text-slate-500">Elementor CMS</p>
       </div>
 
       <!-- IA -->
-      <div class="bg-white p-6 rounded-xl shadow text-center flex flex-col items-center justify-center h-full w-full max-w-[180px]">
+      <div class="w-full h-full bg-white p-4 rounded-xl shadow text-center flex flex-col items-center justify-center">
         <i class="fas fa-robot text-4xl text-blue-500 mb-4"></i>
         <h3 class="text-slate-700 font-semibold text-sm">IA Générative</h3>
         <p class="text-xs text-slate-500">Contenus assistés</p>
@@ -566,7 +617,7 @@
 </section>
 
 <!-- BLOC sous-marques version relookée avec grille alternée (desktop only) -->
-<section class=" py-20 bg-white/80">
+<section class=" py-12 bg-white/80">
   <div class="max-w-6xl mx-auto px-8">
     <h2 class="text-3xl font-bold mb-4 text-center px-8">Découvrir les sous-marques</h2>
       <p class="text-center text-slate-600 text-lg mb-16 max-w-2xl mx-auto">
@@ -581,12 +632,12 @@
           <h3 class="text-2xl font-bold text-orange-600 mb-2">Solutravo Habitat Services</h3>
           <p class="text-slate-600 mb-4 text-sm">Travaux, rénovations et services à domicile.</p>
           <span class="inline-block bg-orange-100 text-orange-600 text-sm font-medium px-4 py-2 rounded-full group-hover:bg-orange-600 group-hover:text-white transition">
-            <i class="fas fa-arrow-left mr-2"></i>Découvrir la sous-marque
+            Découvrir la sous-marque<i class="fas fa-arrow-right ml-2"></i>
           </span>
         </div>
       </div>
       <div class="order-2 rounded-xl overflow-hidden shadow-lg">
-        <img src="habitat.jpg" alt="Preview Habitat" class="w-full h-full object-cover">
+        <img src="Habitatpage.png" alt="Preview Habitat" class="w-full h-full object-cover">
       </div>
     </a>
 
@@ -599,12 +650,12 @@
           <p class="text-sm text-slate-500 italic mb-2">Anciennement Solutravo Immo</p>
           <p class="text-slate-600 mb-4 text-sm">Plateforme de gestion locative digitale.</p>
           <span class="inline-block bg-cyan-100 text-cyan-700 text-sm font-medium px-4 py-2 rounded-full group-hover:bg-cyan-600 group-hover:text-white transition">
-            <i class="fas fa-eye mr-2"></i>Voir le projet
+            Voir le projet<i class="fas fa-arrow-right ml-2"></i>
           </span>
         </div>
       </div>
       <div class="lg:order-1 rounded-xl overflow-hidden shadow-lg">
-        <img src="lokis.jpg" alt="Preview Lokis" class="w-full h-full object-cover">
+        <img src="Lokispage.png" alt="Preview Lokis" class="w-full h-full object-cover">
       </div>
     </a>
 
@@ -616,12 +667,12 @@
           <h3 class="text-2xl font-bold text-yellow-600 mb-2">Solutravo Primes</h3>
           <p class="text-slate-600 mb-4 text-sm">Aide aux subventions (CEE, MaPrimeRénov).</p>
           <span class="inline-block bg-yellow-100 text-yellow-600 text-sm font-medium px-4 py-2 rounded-full group-hover:bg-yellow-600 group-hover:text-white transition">
-            <i class="fas fa-info-circle mr-2"></i>En savoir plus
+            En savoir plus<i class="fas fa-arrow-right ml-2"></i>
           </span>
         </div>
       </div>
       <div class="order-2 rounded-xl overflow-hidden shadow-lg">
-        <img src="primes.jpg" alt="Preview Primes" class="w-full h-full object-cover">
+        <img src="primespage.png" alt="Preview Primes" class="w-full h-full object-cover">
       </div>
     </a>
 
@@ -633,12 +684,11 @@
           <h3 class="text-2xl font-bold text-blue-600 mb-2">Solutravo Compta</h3>
           <p class="text-slate-600 mb-4 text-sm">Gestion comptable des revenus locatifs.</p>
           <span class="inline-block bg-blue-100 text-blue-600 text-sm font-medium px-4 py-2 rounded-full group-hover:bg-blue-600 group-hover:text-white transition">
-            <i class="fas fa-chart-line mr-2"></i>Découvrir
-          </span>
+            Découvrir<i class="fas fa-arrow-right ml-2"></i>
         </div>
       </div>
       <div class="lg:order-1 rounded-xl overflow-hidden shadow-lg">
-        <img src="compta.jpg" alt="Preview Compta" class="w-full h-full object-cover">
+        <img src="Comptapage.png" alt="Preview Compta" class="w-full h-full object-cover">
       </div>
     </a>
 
