@@ -7,79 +7,95 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        * {
-            font-family: 'Inter', sans-serif;
-        }
-        
+            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@700;800&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #e0f2fe 100%);
+      color: #1e40af;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      min-height: 100vh;
+    }
+
+    .hero-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100vh;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .shape {
+      position: absolute;
+      opacity: 0.6;
+      transition: transform 0.3s ease;
+    }
+
+    .shape-1 {
+      width: 250px; height: 300px;
+      background: radial-gradient(circle, rgba(59,130,246,0.2), rgba(147,197,253,0.1));
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      top: 10%; left: 5%;
+      filter: blur(0.5px);
+    }
+
+    .shape-2 {
+      width: 200px; height: 250px;
+      background: linear-gradient(145deg, rgba(99,102,241,0.18), rgba(147,197,253,0.08));
+      border-radius: 50% 50% 70% 30% / 30% 60% 40% 70%;
+      top: 50%; right: 10%;
+      filter: blur(0.8px);
+    }
+    .shape-3 {
+      width: 180px; height: 220px;
+      background: linear-gradient(125deg, rgba(59,130,246,0.25), rgba(255,255,255,0.1));
+      border-radius: 70% 30% 50% 50% / 50% 60% 40% 70%;
+      bottom: 10%; left: 30%;
+      filter: blur(1px);
+    }
+
+    .glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(59,130,246,0.1), transparent 70%);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: pulse 6s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+      50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.2; }
+    }
+
+    .particles {
+      position: absolute;
+      width: 100%; height: 100%;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 3px; height: 3px;
+      background: rgba(59,130,246,0.4);
+      border-radius: 50%;
+      animation: particleFloat 20s infinite ease-in-out;
+      box-shadow: 0 0 6px rgba(59,130,246,0.3);
+    }
+
+    @keyframes particleFloat {
+      0% { transform: translateY(100vh); opacity: 0; }
+      10%, 90% { opacity: 1; }
+      100% { transform: translateY(-100px); opacity: 0; }
+    }
+
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #e0f2fe 100%);
-            color: #1e40af;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-            min-height: 100vh;
-        }
-
-        /* Hero Background */
-        .hero-bg {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100vh;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .shape {
-            position: absolute;
-            transition: transform 0.3s ease;
-            opacity: 0.6;
-        }
-
-        .shape-1 {
-            width: 250px; height: 300px;
-            background: radial-gradient(circle, rgba(59,130,246,0.2), rgba(147,197,253,0.1));
-            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-            top: 10%; left: 5%;
-            filter: blur(0.5px);
-        }
-
-        .shape-2 {
-            width: 200px; height: 250px;
-            background: linear-gradient(145deg, rgba(99,102,241,0.18), rgba(147,197,253,0.08));
-            border-radius: 50% 50% 70% 30% / 30% 60% 40% 70%;
-            top: 50%; right: 10%;
-            filter: blur(0.8px);
-        }
-
-        .shape-3 {
-            width: 180px; height: 220px;
-            background: linear-gradient(125deg, rgba(59,130,246,0.25), rgba(255,255,255,0.1));
-            border-radius: 70% 30% 50% 50% / 50% 60% 40% 70%;
-            bottom: 10%; left: 30%;
-            filter: blur(1px);
-        }
-
-        .glow {
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(59,130,246,0.1), transparent 70%);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            animation: pulse 6s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.2; }
         }
 
         /* Hero Section */
@@ -496,7 +512,7 @@
 .back-button:hover {
     color: #3b82f6;
     background: rgba(255, 255, 255, 1);
-    transform: translateY(-3px) scale(1.02);
+    transform: translateY(-3px);
     box-shadow: 0 16px 48px rgba(59, 130, 246, 0.2), 0 6px 20px rgba(0, 0, 0, 0.12);
     border: 1px solid rgba(59, 130, 246, 0.1);
 }
@@ -594,6 +610,22 @@
 
     <!-- Hero Section -->
 <section class="hero-section">
+
+      <!-- Fil d'Ariane centré -->
+<nav class="text-sm text-slate-500 mb-4 flex justify-center" aria-label="Breadcrumb">
+  <ol class="flex flex-wrap items-center space-x-2">
+    <li>
+      <a href="index.html" class="hover:text-blue-600 transition"><i class="fas fa-home mr-1"></i>Accueil</a>
+    </li>
+    <li><span class="mx-1">›</span></li>
+    <li>
+      <a href="travaux.html" class="hover:text-blue-600 transition">Travaux</a>
+    </li>
+    <li><span class="mx-1">›</span></li>
+    <li class="text-slate-600 font-semibold">La Fée Confiture</li>
+  </ol>
+</nav>
+
     <!-- Bouton Retour -->
     <a href="travaux.html" class="back-button inline-flex">
         <i class="fas fa-arrow-left "></i>
@@ -618,7 +650,7 @@
 </section>
 
 <!-- Contexte du projet -->
-<section class="px-8 sm:px-8 lg:px-8 pt-24 sm:pt-28 pb-4">
+<section class="px-8 sm:px-8 lg:px-8 pt-24 sm:pt-28">
     <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             
@@ -702,7 +734,7 @@
     <div class="max-w-7xl mx-auto relative">
         
         <!-- Étape 1 -->
-        <div class="fade-in mb-16 sm:mb-24 relative" style="animation-delay: 0.1s;">
+        <div class="fade-in mb-8 sm:mb-12 relative" style="animation-delay: 0.1s;">
             <div class="progress-dot hidden lg:block" style="top: 100px;"></div>
             <div class="step-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 relative">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
@@ -747,7 +779,7 @@
         </div>
 
         <!-- Galerie d'images après Étape 1 -->
-        <div class="fade-in mb-16 sm:mb-24 relative" style="animation-delay: 0.15s;">
+        <div class="fade-in mb-8 sm:mb-12 relative" style="animation-delay: 0.15s;">
             <div class="progress-dot hidden lg:block" style="top: 50%;"></div>
             <div class="image-gallery rounded-2xl sm:rounded-3xl p-6 sm:p-8">
                 <div class="text-center mb-6 sm:mb-8">
@@ -769,7 +801,7 @@
         </div>
 
         <!-- Étape 2 -->
-<div class="fade-in mb-16 sm:mb-24 relative lg:pl-36 lg:pr-36" style="animation-delay: 0.2s;">
+<div class="fade-in mb-8 sm:mb-12 relative lg:pl-36 lg:pr-36" style="animation-delay: 0.2s;">
   <div class="progress-dot hidden lg:block" style="top: 100px;"></div>
   <div class="step-card rounded-2xl sm:rounded-3xl p-6 sm:p-8">
     <div class="flex flex-col lg:flex-row items-center gap-0">
@@ -825,7 +857,7 @@
 
 
         <!-- Galerie d'images après Étape 2 -->
-        <div class="fade-in mb-16 sm:mb-24 relative" style="animation-delay: 0.25s;">
+        <div class="fade-in mb-8 sm:mb-12 relative" style="animation-delay: 0.25s;">
             <div class="progress-dot hidden lg:block" style="top: 50%;"></div>
             <div class="image-gallery rounded-2xl sm:rounded-3xl p-6 sm:p-8">
                 <div class="text-center mb-6 sm:mb-8">
@@ -850,7 +882,7 @@
         </div>
 
 <!-- Étape 3 -->
-        <div class="fade-in mb-16 sm:mb-24 lg:pl-20 lg:pr-20" style="animation-delay: 0.3s;">
+        <div class="fade-in mb-8 sm:mb-12 lg:pl-20 lg:pr-20" style="animation-delay: 0.3s;">
             <div class="step-card rounded-2xl sm:rounded-3xl p-6 sm:p-8">
                 <div class="grid grid-cols-1 gap-6 sm:gap-8 items-start">
                     <div>
@@ -901,7 +933,7 @@
         </div>
 
         <!-- Étape 4 -->
-        <div class="fade-in mb-16 sm:mb-24 lg:pl-20 lg:pr-20" style="animation-delay: 0.4s;">
+        <div class="fade-in mb-8 sm:mb-12 lg:pl-20 lg:pr-20" style="animation-delay: 0.4s;">
             <div class="step-card rounded-2xl sm:rounded-3xl p-6 sm:p-8">
                 <div class="grid grid-cols-1 gap-6 sm:gap-8 items-start">
                     <div class="order-2">
@@ -965,7 +997,7 @@
                 Explorez l'ensemble du processus de conception et les livrables finaux de ce projet e-commerce
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://www.figma.com/proto/L4i30hx9cxmuJdtiq4olvw/Untitled?node-id=0-1&p=f&t=KmkAWkhO8nqmykBj-0&scaling=scale-down&content-scaling=fixed&starting-point-node-id=72%3A1210&show-proto-sidebar=1" target="_blank" class="inline-flex items-center gap-3 bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-all transform hover:scale-105">
+                <a href="https://www.figma.com/proto/L4i30hx9cxmuJdtiq4olvw/Untitled?node-id=6-6595&p=f&t=eEul54GZgM6uAyq4-0&scaling=scale-down&content-scaling=fixed&starting-point-node-id=509%3A3275" target="_blank" class="inline-flex items-center gap-3 bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-all transform hover:scale-105">
                     <i class="fas fa-laptop text-lg text-blue-500"></i>
                     Prototype Figma ordinateur
                 </a>
@@ -990,46 +1022,29 @@
   </footer>
 
 <script>
-// Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+// Animation particules
+  setInterval(() => {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDelay = Math.random() * 20 + 's';
+    p.style.animationDuration = (Math.random() * 15 + 15) + 's';
+    document.getElementById('particles').appendChild(p);
+    setTimeout(() => p.remove(), 35000);
+  }, 800);
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
-        }, observerOptions);
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+  // Parallax des formes
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        document.querySelectorAll('.shape').forEach((shape, i) => {
+          shape.style.transform = `translate3d(${y * Math.sin(i) * 0.05}px, ${-y * (0.1 + i * 0.02)}px, 0)`;
         });
-
-        // Background shapes animation on mouse move
-        document.addEventListener('mousemove', (e) => {
-            const shapes = document.querySelectorAll('.shape');
-            const mouseX = e.clientX / window.innerWidth;
-            const mouseY = e.clientY / window.innerHeight;
-
-            shapes.forEach((shape, index) => {
-                const intensity = (index + 1) * 10;
-                const moveX = (mouseX - 0.5) * intensity;
-                const moveY = (mouseY - 0.5) * intensity;
-                
-                shape.style.transform = `translate(${moveX}px, ${moveY}px)`;
-            });
-        });
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
     </script>

@@ -330,6 +330,32 @@
     <p class="footer-text">© 2025 David GRIMEAU. Tous droits réservés.</p>
   </div>
 </footer>
+<script>
+  // Animation particules
+  setInterval(() => {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDelay = Math.random() * 20 + 's';
+    p.style.animationDuration = (Math.random() * 15 + 15) + 's';
+    document.getElementById('particles').appendChild(p);
+    setTimeout(() => p.remove(), 35000);
+  }, 800);
 
+  // Parallax des formes
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        document.querySelectorAll('.shape').forEach((shape, i) => {
+          shape.style.transform = `translate3d(${y * Math.sin(i) * 0.05}px, ${-y * (0.1 + i * 0.02)}px, 0)`;
+        });
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+</script>
 </body>
 </html>
