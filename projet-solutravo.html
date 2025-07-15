@@ -450,6 +450,30 @@
         transform: translateY(0);
         box-shadow: 0 2px 4px rgba(59, 130, 246, 0.1);
     }
+
+.full-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 123, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: 18px;
+}
+
+.status-bubble {
+  background-color: white;
+  color: #007bff;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 3;
+}
+
     </style>
 
 <body class="from-slate-50 to-blue-50 min-h-screen">
@@ -617,17 +641,20 @@
 </section>
 
 <!-- BLOC sous-marques version relookée avec grille alternée (desktop only) -->
-<section class=" py-12 bg-white/80">
+<section class="py-12 bg-white/80">
   <div class="max-w-6xl mx-auto px-8">
     <h2 class="text-3xl font-bold mb-4 text-center px-8">Découvrir les sous-marques</h2>
-      <p class="text-center text-slate-600 text-lg mb-16 max-w-2xl mx-auto">
+    <p class="text-center text-slate-600 text-lg mb-16 max-w-2xl mx-auto">
       Une approche centrée sur leurs identités, leurs missions et leur complémentarité au sein de l'écosystème Solutravo.
     </p>
 
     <!-- Bloc 1 : Habitat -->
     <a href="#habitat" class="group grid grid-cols-1 lg:grid-cols-2 items-center gap-8 mb-16">
       <div class="order-1">
-        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:scale-[1.01] border border-orange-100 btn active:scale-95 active:translate-y-0.5">
+        <div class="relative bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:scale-[1.01] border border-orange-100 btn active:scale-95 active:translate-y-0.5">
+          <div class="full-overlay">
+            <div class="status-bubble">En cours</div>
+          </div>
           <img src="Logo-Solutravo-Habhitat-Service.png" alt="Logo Habitat" class="w-3/4 max-w-xs h-auto px-6 mb-4 mx-auto object-contain">
           <h3 class="text-2xl font-bold text-orange-600 mb-2">Solutravo Habitat Services</h3>
           <p class="text-slate-600 mb-4 text-sm">Travaux, rénovations et services à domicile.</p>
@@ -644,7 +671,10 @@
     <!-- Bloc 2 : Lokis -->
     <a href="#lokis" class="group grid grid-cols-1 lg:grid-cols-2 items-center gap-8 mb-16">
       <div class="lg:order-2">
-        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:scale-[1.01] border border-cyan-100 btn active:scale-95 active:translate-y-0.5">
+        <div class="relative bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:scale-[1.01] border border-cyan-100 btn active:scale-95 active:translate-y-0.5">
+          <div class="full-overlay">
+            <div class="status-bubble">En cours</div>
+          </div>
           <img src="Logo-Lokis.png" alt="Logo Habitat" class="w-3/4 max-w-xs h-auto px-16 mb-4 mx-auto object-contain">
           <h3 class="text-2xl font-bold text-cyan-600 mb-2">Lokis</h3>
           <p class="text-sm text-slate-500 italic mb-2">Anciennement Solutravo Immo</p>
@@ -662,7 +692,10 @@
     <!-- Bloc 3 : Primes -->
     <a href="#primes" class="group grid grid-cols-1 lg:grid-cols-2 items-center gap-8 mb-16">
       <div class="order-1">
-        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:scale-[1.01] border border-yellow-100 btn active:scale-95 active:translate-y-0.5">
+        <div class="relative bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:scale-[1.01] border border-yellow-100 btn active:scale-95 active:translate-y-0.5">
+          <div class="full-overlay">
+            <div class="status-bubble">En cours</div>
+          </div>
           <img src="Logo-Solutravo-primes.png" alt="Logo Habitat" class="w-3/4 max-w-xs h-auto px-6 mb-4 mx-auto object-contain">
           <h3 class="text-2xl font-bold text-yellow-600 mb-2">Solutravo Primes</h3>
           <p class="text-slate-600 mb-4 text-sm">Aide aux subventions (CEE, MaPrimeRénov).</p>
@@ -677,14 +710,18 @@
     </a>
 
     <!-- Bloc 4 : Compta -->
-    <a href="#compta" class="group grid grid-cols-1 lg:grid-cols-2 items-center gap-8 mb-8 ">
+    <a href="#compta" class="group grid grid-cols-1 lg:grid-cols-2 items-center gap-8 mb-8">
       <div class="lg:order-2">
-        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:scale-[1.01] border border-blue-100 btn active:scale-95 active:translate-y-0.5">
+        <div class="relative bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:scale-[1.01] border border-blue-100 btn active:scale-95 active:translate-y-0.5">
+          <div class="full-overlay">
+            <div class="status-bubble">En cours</div>
+          </div>
           <img src="Logo-Solutravo-Compta.png" alt="Logo Habitat" class="w-3/4 max-w-xs h-auto px-6 mb-4 mx-auto object-contain">
           <h3 class="text-2xl font-bold text-blue-600 mb-2">Solutravo Compta</h3>
           <p class="text-slate-600 mb-4 text-sm">Gestion comptable des revenus locatifs.</p>
           <span class="inline-block bg-blue-100 text-blue-600 text-sm font-medium px-4 py-2 rounded-full group-hover:bg-blue-600 group-hover:text-white transition">
             Découvrir<i class="fas fa-arrow-right ml-2"></i>
+          </span>
         </div>
       </div>
       <div class="lg:order-1 rounded-xl overflow-hidden shadow-lg">
@@ -694,6 +731,7 @@
 
   </div>
 </section>
+
 
 
 <!-- CTA -->
